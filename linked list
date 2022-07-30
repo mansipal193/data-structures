@@ -1,0 +1,84 @@
+class linkedlist{
+Node head;
+private int size;
+ll(){
+   this.size=0;
+   }
+   class Node{
+       String data;
+       Node next;
+       Node(String data){
+          this.data=data;
+          this.next=null;
+          size++;
+          }
+   }
+   public void addFirst(String data){
+      Node newNode=new Node(data);
+      newNode.next=head;
+      head=newNode;
+      }
+   public void addLast(String data){
+       Node newNode=new Node(data);
+       if(head==null){
+         head=newNode;
+         return;
+         }
+         Node lastNode=head;
+         while(lastNode!=null){
+           lastNode=lastNode.next;
+           }
+           lastnode.next=newNode;
+           }
+           public void printList(){
+               Node currNode=head;
+               while(lastNode!=null){
+                  System.out.print(currNode.data+"->");
+                  currNode=currNode.next;
+                  }
+             }
+             public void removeFirst(){
+                 if(head==null){
+                     System.out.println("Empty list);
+                     return;
+                     }
+                     head=this.head.next;
+                     size--;
+                     }
+               public void removeLast(){
+                   if(head==null){
+                     System.out.println("Empty list);
+                     return;
+                     }
+                     size--;
+                   Node currNode=head;
+                   if(head.next!=null){
+                      head=null;
+                      return;
+                      }
+                      Node currNode=head;
+                      Node lastNode=head.next;
+                      while(lastNode!=null){
+                         currNode=currNode.next;
+                         lastNode=lastNode.next;
+                         }
+                        currNode.next=null;
+                        }
+                     public int getSize(){
+                         return size;
+                         }      
+   public static void main(String args[]){
+         linkedlist ll=new linkedlist();
+         ll.addLast("is");
+         ll.addLast("a");
+         ll.addLast("list");
+         ll.printList();
+         ll.addFirst("this");
+         ll.printlist();
+         System.out.println(list.getSize());
+         ll.removeFirst();
+         ll.removeLast();
+         ll.printList();
+         }
+         }
+         
