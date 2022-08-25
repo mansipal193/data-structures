@@ -1,0 +1,75 @@
+public class binarySearchTree{
+    static class Node{
+       int data;
+       Node left;
+       Node right;
+       Node(int data){
+          this.data=data;
+         }
+       }
+      public static void inorder(Node root){
+         inorder(root.left);
+         Sysem.out.println(root.data+" ");
+         inorder(root.right);
+      }//this will return the sorted sequence of a tree in ascending order.
+      public static boolean search(Node root,int key){
+           if(root==null){
+                return false;
+           }
+           if(root.data>key){
+                 return search(root.left,key);
+           }
+           else if(root==key){
+               return true;
+           }
+           else if(root.data<key){
+               return search(root.right,key);
+           }
+           public static Node delete(Node root,int val){
+               //firstly we will do the work of searching the node that is to be deleted now there are mainly three cases that can be raised the first case is that node is leaf node
+               //the second case is that node has a single child and the third case is that it has two child 
+               if(root.data>val){
+                   root.left=delete(root.left,val);
+               }
+               else if(root.data<val){
+                       root.right=delete(root.right,val);
+               }
+               else if(root.data==val){
+                   //case 1 if the root is the leaf node
+                   if(root.left==null&&root.right==null){
+                       return null;
+                   }
+                   //case 2 when there is only one child 
+                   if(root.left==null){
+                       return root.right;
+                    }
+                    else if(root.right==null){
+                       return root.left;
+                    }
+                    //case 3 when there are two child 
+                    Node IS=inorderSuccessor(root.right);
+                    root.data=IS.data;
+                    root.right=delete(root.right,IS.data);
+                    }
+                    return root;
+                   }
+              public static Node inorderSuccessor(Node root){
+                    while(root.left!=null){
+                       root=root.left;
+                    }
+                    return root;
+              }
+      public static void main(String args[]){
+          int values[]={8,5,3,1,4,6,10,11,14};
+          Node root=null;
+          for(int i=0;i<values.length;i++){
+             root=insert(root,values[i]);
+          }
+          inorder(root);
+          System.out.println();
+          delete(root,4);
+          inorder(root);
+        }
+      }
+      
+          
